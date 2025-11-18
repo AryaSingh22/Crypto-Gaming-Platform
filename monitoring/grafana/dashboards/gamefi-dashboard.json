@@ -1,0 +1,600 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "GameFi Platform - Security & Performance Dashboard",
+    "tags": ["gamefi", "security", "monitoring"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Platform Overview",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "gamefi_total_users",
+            "legendFormat": "Total Users"
+          },
+          {
+            "expr": "gamefi_active_users_24h",
+            "legendFormat": "Active Users (24h)"
+          },
+          {
+            "expr": "gamefi_total_volume_usd",
+            "legendFormat": "Total Volume (USD)"
+          },
+          {
+            "expr": "gamefi_total_transactions",
+            "legendFormat": "Total Transactions"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "list",
+              "orientation": "horizontal"
+            },
+            "mappings": [],
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Transaction Volume (24h)",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "rate(gamefi_transaction_volume_total[1h]) * 3600",
+            "legendFormat": "Volume per Hour"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "fillOpacity": 0.1,
+              "gradientMode": "none",
+              "spanNulls": false,
+              "insertNulls": false,
+              "showPoints": "auto",
+              "pointSize": 5
+            },
+            "unit": "short"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Transaction Success Rate",
+        "type": "gauge",
+        "targets": [
+          {
+            "expr": "(gamefi_successful_transactions / gamefi_total_transactions) * 100",
+            "legendFormat": "Success Rate %"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 90
+                },
+                {
+                  "color": "green",
+                  "value": 95
+                }
+              ]
+            },
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "Security Alerts",
+        "type": "table",
+        "targets": [
+          {
+            "expr": "gamefi_security_alerts",
+            "legendFormat": "{{severity}} - {{alert_type}}"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto"
+            },
+            "mappings": [],
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 1
+                },
+                {
+                  "color": "red",
+                  "value": 5
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Gas Usage Trends",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "gamefi_average_gas_used",
+            "legendFormat": "Average Gas Used"
+          },
+          {
+            "expr": "gamefi_gas_price",
+            "legendFormat": "Gas Price (Gwei)"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 16
+        }
+      },
+      {
+        "id": 6,
+        "title": "Contract Health Status",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "gamefi_contract_health{contract=\"GameToken\"}",
+            "legendFormat": "GameToken"
+          },
+          {
+            "expr": "gamefi_contract_health{contract=\"GamePass\"}",
+            "legendFormat": "GamePass"
+          },
+          {
+            "expr": "gamefi_contract_health{contract=\"CoinFlip\"}",
+            "legendFormat": "CoinFlip"
+          },
+          {
+            "expr": "gamefi_contract_health{contract=\"Lottery\"}",
+            "legendFormat": "Lottery"
+          },
+          {
+            "expr": "gamefi_contract_health{contract=\"PvPBetting\"}",
+            "legendFormat": "PvP Betting"
+          },
+          {
+            "expr": "gamefi_contract_health{contract=\"StakingPool\"}",
+            "legendFormat": "Staking Pool"
+          },
+          {
+            "expr": "gamefi_contract_health{contract=\"Marketplace\"}",
+            "legendFormat": "Marketplace"
+          },
+          {
+            "expr": "gamefi_contract_health{contract=\"ReferralSystem\"}",
+            "legendFormat": "Referral System"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 24
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "text": "Down"
+                  },
+                  "1": {
+                    "text": "Healthy"
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 7,
+        "title": "Top Users by Volume",
+        "type": "table",
+        "targets": [
+          {
+            "expr": "topk(10, gamefi_user_volume)",
+            "legendFormat": "{{user_address}}"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 32
+        }
+      },
+      {
+        "id": 8,
+        "title": "Game Activity Distribution",
+        "type": "piechart",
+        "targets": [
+          {
+            "expr": "gamefi_game_activity{game=\"CoinFlip\"}",
+            "legendFormat": "CoinFlip"
+          },
+          {
+            "expr": "gamefi_game_activity{game=\"Lottery\"}",
+            "legendFormat": "Lottery"
+          },
+          {
+            "expr": "gamefi_game_activity{game=\"PvPBetting\"}",
+            "legendFormat": "PvP Betting"
+          },
+          {
+            "expr": "gamefi_game_activity{game=\"Staking\"}",
+            "legendFormat": "Staking"
+          },
+          {
+            "expr": "gamefi_game_activity{game=\"Marketplace\"}",
+            "legendFormat": "Marketplace"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 32
+        }
+      },
+      {
+        "id": 9,
+        "title": "Risk Score Distribution",
+        "type": "histogram",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, gamefi_risk_score_bucket)",
+            "legendFormat": "95th percentile"
+          },
+          {
+            "expr": "histogram_quantile(0.50, gamefi_risk_score_bucket)",
+            "legendFormat": "50th percentile"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 40
+        }
+      },
+      {
+        "id": 10,
+        "title": "Circuit Breaker Status",
+        "type": "table",
+        "targets": [
+          {
+            "expr": "gamefi_circuit_breaker_status",
+            "legendFormat": "{{breaker_type}}"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 40
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "text": "Normal"
+                  },
+                  "1": {
+                    "text": "Triggered"
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 11,
+        "title": "Network Metrics",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "gamefi_network_latency",
+            "legendFormat": "Network Latency (ms)"
+          },
+          {
+            "expr": "gamefi_block_time",
+            "legendFormat": "Block Time (s)"
+          },
+          {
+            "expr": "gamefi_pending_transactions",
+            "legendFormat": "Pending Transactions"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 48
+        }
+      },
+      {
+        "id": 12,
+        "title": "Revenue Metrics",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "rate(gamefi_revenue_total[1h]) * 3600",
+            "legendFormat": "Revenue per Hour"
+          },
+          {
+            "expr": "gamefi_fees_collected",
+            "legendFormat": "Fees Collected"
+          },
+          {
+            "expr": "gamefi_rewards_distributed",
+            "legendFormat": "Rewards Distributed"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 56
+        }
+      },
+      {
+        "id": 13,
+        "title": "Staking Metrics",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "gamefi_total_staked",
+            "legendFormat": "Total Staked"
+          },
+          {
+            "expr": "gamefi_staking_pool_count",
+            "legendFormat": "Active Pools"
+          },
+          {
+            "expr": "gamefi_average_apy",
+            "legendFormat": "Average APY"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 56
+        }
+      },
+      {
+        "id": 14,
+        "title": "NFT Marketplace Activity",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "gamefi_nft_sales_volume",
+            "legendFormat": "Sales Volume"
+          },
+          {
+            "expr": "gamefi_nft_listing_count",
+            "legendFormat": "Active Listings"
+          },
+          {
+            "expr": "gamefi_nft_floor_price",
+            "legendFormat": "Floor Price"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 64
+        }
+      }
+    ],
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          "hide": 0,
+          "includeAll": true,
+          "label": "Contract",
+          "multi": true,
+          "name": "contract",
+          "options": [],
+          "query": "label_values(gamefi_contract_health, contract)",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          "hide": 0,
+          "includeAll": true,
+          "label": "Severity",
+          "multi": true,
+          "name": "severity",
+          "options": [],
+          "query": "label_values(gamefi_security_alerts, severity)",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        },
+        {
+          "datasource": "prometheus",
+          "enable": true,
+          "expr": "ALERTS{alertname=\"GameFiHighAlert\"}",
+          "iconColor": "red",
+          "name": "High Severity Alerts",
+          "titleFormat": "{{alertname}}",
+          "tagKeys": "severity"
+        }
+      ]
+    },
+    "refresh": "30s",
+    "schemaVersion": 27,
+    "version": 1,
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": false,
+        "title": "Security Dashboard",
+        "tooltip": "",
+        "type": "dashboards",
+        "url": "/d/security/gamefi-security-dashboard"
+      },
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": false,
+        "title": "Performance Dashboard",
+        "tooltip": "",
+        "type": "dashboards",
+        "url": "/d/performance/gamefi-performance-dashboard"
+      }
+    ]
+  }
+}

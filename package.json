@@ -1,0 +1,19 @@
+{
+  "name": "crypto-gaming-platform",
+  "version": "1.0.0",
+  "description": "Crypto Gaming Platform with GameFi features",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["gamefi", "blockchain", "ethereum", "gaming"],
+  "author": "GameFi Platform Team",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^6.13.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.2.2"
+  }
+}

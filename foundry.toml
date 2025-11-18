@@ -1,0 +1,38 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+test = "test"
+cache_path = "cache"
+
+# Solidity compiler settings - optimized for contract size
+solc_version = "0.8.19"
+optimizer = true
+optimizer_runs = 1000000  # High runs for size optimization
+via_ir = true
+evm_version = "paris"
+
+# Test settings
+fuzz_runs = 1000
+fuzz_max_test_rejects = 65536
+
+# Gas reporter settings
+gas_reports = ["*"]
+
+# Remappings for dependencies
+remappings = [
+    "@openzeppelin/=lib/openzeppelin-contracts/",
+    "@chainlink/=lib/chainlink-brownie-contracts/",
+    "forge-std/=lib/forge-std/src/"
+]
+
+# RPC endpoints for different networks
+[rpc_endpoints]
+polygon_amoy = "https://rpc-amoy.polygon.technology"
+arbitrum_sepolia = "https://sepolia-rollup.arbitrum.io/rpc"
+localhost = "http://localhost:8545"
+
+# Etherscan API keys for verification
+[etherscan]
+polygon_amoy = { key = "${POLYGONSCAN_API_KEY}", url = "https://api-amoy.polygonscan.com/api" }
+arbitrum_sepolia = { key = "${ARBISCAN_API_KEY}", url = "https://api-sepolia.arbiscan.io/api" }

@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+*/node_modules/
+frontend/node_modules/
+
+# Foundry build outputs
+out/
+cache/
+lib/
+artifacts/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large binary files
+*.node
+*.dll
+*.exe
+nul
+
+# Logs
+*.log
+logs/
+
+# Documentation and roadmap files (not for GitHub)
+ARCHITECTURE.md
+PHASE2_SUMMARY.md
+PROJECT_SUMMARY.md
+SECURITY_CONFIG.md
+docs/
+*.roadmap.md
+*_SUMMARY.md
