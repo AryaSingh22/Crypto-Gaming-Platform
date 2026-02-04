@@ -4,7 +4,9 @@
   "description": "Crypto Gaming Platform with GameFi features",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "forge test",
+    "test:frontend": "npm --prefix frontend run lint && npm --prefix frontend run type-check",
+    "build:frontend": "npm --prefix frontend run build"
   },
   "keywords": ["gamefi", "blockchain", "ethereum", "gaming"],
   "author": "GameFi Platform Team",

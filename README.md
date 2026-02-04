@@ -25,6 +25,18 @@ A comprehensive, decentralized GameFi platform built on Ethereum-compatible netw
 - **AI Analytics Engine**: On-chain data tracking for user behavior and game performance.
 - **Social GameFi**: User profiles, reputation systems, and social interaction features.
 
+## 🎯 Project Ambition (Finalized)
+
+This platform aims to deliver a complete, production-grade GameFi ecosystem with:
+
+- **Trust-minimized gameplay**: All core game outcomes and payouts verified on-chain.
+- **Composable economy**: ERC-20 utility token, NFT access passes, staking, and marketplaces with consistent tokenomics.
+- **Governed evolution**: A DAO that can safely tune parameters, treasury management, and feature rollouts.
+- **Multi-chain presence**: Deployments across Polygon and Arbitrum testnets with a clear path to mainnet.
+- **Player-first UX**: A responsive Next.js frontend with wallet connectivity and clear game flows.
+
+Out of scope for this release: integrating new game genres or third-party studios, which will be scoped in future milestones.
+
 ## 🏗 Architecture
 
 The platform utilizes a modular architecture powered by **Foundry** for smart contracts and **Next.js** for the frontend.
@@ -61,6 +73,10 @@ The platform utilizes a modular architecture powered by **Foundry** for smart co
     ```bash
     cp .env.example .env
     ```
+    Copy the frontend environment template:
+    ```bash
+    cp frontend/.env.example frontend/.env.local
+    ```
 
 ### Running Tests
 
@@ -81,6 +97,14 @@ Deploy to a supported network (e.g., Polygon Amoy):
 ```bash
 forge script script/DeployPhase3.s.sol --rpc-url <YOUR_RPC_URL> --broadcast
 ```
+
+### Deployment Readiness Checklist
+
+- ✅ `.env` and `frontend/.env.local` filled with production values.
+- ✅ `forge test` passes and frontend `lint`/`type-check` are clean.
+- ✅ Deployment script points to the correct RPC URL and chain ID.
+- ✅ Admin and treasury addresses verified and secured.
+- ✅ VRF subscription funded and correctly configured for the target chain.
 
 ## 📂 Project Structure
 
