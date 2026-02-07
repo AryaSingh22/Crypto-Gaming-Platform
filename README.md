@@ -1,7 +1,7 @@
 # 🎮 Crypto Gaming Platform
 
 A comprehensive, decentralized GameFi platform built on Ethereum-compatible networks (Polygon, Arbitrum). This project implements a full-stack gaming ecosystem featuring NFT-based access, tokenomics, DAO governance, cross-chain bridging, and multiple on-chain games.
-
+ 
 ## 🌟 Features
 
 ### Phase 1: Core Infrastructure & Basic Games
